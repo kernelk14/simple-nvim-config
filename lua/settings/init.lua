@@ -1,0 +1,8 @@
+require("settings.ui")
+require("settings.statusline")
+require("settings.indentline")
+require("settings.autopair")
+require("settings.completion")
+require("settings.tabline")
+require("settings.mappings")
+require("settings.nvim-tree")
