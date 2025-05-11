@@ -6,7 +6,7 @@ keymap('n', "}", "<cmd>bn<cr>", opts)
 keymap('n', ";d", "<cmd>bd<cr>", opts)
 
 
-keymap('n', ';ff', "<cmd>Neotree float<cr>", opts)
+keymap('n', ';ff', "<cmd>NvimTreeToggle<cr>", opts)
 keymap('n', '<C-n>', "<cmd>NvimTreeToggle<cr>", opts)
 keymap('n', ";gg", "<cmd>Neogit<cr>", opts)
 

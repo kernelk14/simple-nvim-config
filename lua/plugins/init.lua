@@ -59,17 +59,13 @@ require("lazy").setup({
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
     },
     {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons",
-            "MunifTanjim/nui.nvim",
-        },
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons",
+        "MunifTanjim/nui.nvim",
     },
     {
-        "nvim-tree/nvim-tree.lua",
-    },
+        'nvim-tree/nvim-tree.lua'
+    }, 
     {
         "nvimdev/indentmini.nvim",
     },
@@ -80,6 +76,20 @@ require("lazy").setup({
     },
     {
         "rafamadriz/friendly-snippets",
+    },
+    {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+        lazy = false,
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+    },
+    {
+        { "ms-jpq/coq.nvim", branch = "coq" },
+        { "ms-jpq/coq.artifacts", branch = "artifacts" },
+        { "ms-jpq/coq.thirdparty", branch = "3p" },
     },
 
   },
