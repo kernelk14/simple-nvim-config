@@ -76,8 +76,8 @@ require("lazy").setup({
         "neovim/nvim-lspconfig",
     },
     {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
+        "mason-org/mason.nvim",
+        "mason-org/mason-lspconfig.nvim",
     },
     {
         { 'ms-jpq/coq_nvim', branch = 'coq' },
