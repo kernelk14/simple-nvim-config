@@ -45,8 +45,7 @@ require("lazy").setup({
         version = false
     },
     {
-        "echasnovski/mini.statusline",
-        version = false
+        "nvim-lualine/lualine.nvim",
     },
     { 
         "nvim-tree/nvim-web-devicons",
@@ -59,13 +58,9 @@ require("lazy").setup({
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
     },
     {
-        "nvim-lua/plenary.nvim",
-        "nvim-tree/nvim-web-devicons",
-        "MunifTanjim/nui.nvim",
+        "nvim-tree/nvim-tree.lua",
     },
-    {
-        'nvim-tree/nvim-tree.lua'
-    }, 
+
     {
         "nvimdev/indentmini.nvim",
     },
@@ -90,6 +85,7 @@ require("lazy").setup({
         { "ms-jpq/coq.nvim", branch = "coq" },
         { "ms-jpq/coq.artifacts", branch = "artifacts" },
         { "ms-jpq/coq.thirdparty", branch = "3p" },
+
     },
 
   },
