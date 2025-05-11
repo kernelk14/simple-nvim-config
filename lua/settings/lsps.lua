@@ -4,7 +4,7 @@ require("mason-lspconfig").setup()
 local lspconfig = require("lspconfig")
 
 
-local servers = {'clangd', 'html', 'cssls', 'emmet_language_server', 'ols'}
+local servers = {'clangd', 'html', 'cssls', 'emmet_language_server', 'ols', 'gopls'}
 
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {}

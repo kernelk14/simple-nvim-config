@@ -11,6 +11,7 @@ local lsps = {
     "cssls",
     "html",
     "emmet_language_server",
+    "gopls",
 }
 
 require("mason").setup()
