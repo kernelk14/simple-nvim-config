@@ -1,22 +1,25 @@
 local lsp = require("lspconfig")
-local coq = require("coq")
+-- local coq = require("coq")
 
 local util = lsp.util
 
 local lsps = {
     "lua_ls",
-    "pyright",
     "clangd",
     "omnisharp",
-    "cssls",
-    "html",
-    "emmet_language_server",
     "gopls",
 }
 
-require("mason").setup()
+require("mason").setup({
+    log_level = vim.log.levels.DEBUG,
+    registries = {    "github:mason-org/mason-registry@2025-05-13-six-draw" },
+    providers = { "mason.providers.client", },
+    github = {
+        download_url_template = 'https://proxy.corporate.com/generic-github-releases/%s/releases/download/%s/%s',
+    }
+})
 require("mason-lspconfig").setup({
-    automatic_enable = false,
+    --automatic_enable = false,
     ensure_installed = lsps,
 })
 
@@ -30,14 +33,14 @@ lsp.lua_ls.setup({
         workspace = {
             library = vim.api.nvim_get_runtime_file("", true),
         },
-    }
-}, coq.lsp_ensure_capabilities())
+    },
+})
 
-lsp.html.setup(coq.lsp_ensure_capabilities())
-lsp.emmet_language_server.setup(coq.lsp_ensure_capabilities())
-lsp.pyright.setup(coq.lsp_ensure_capabilities())
-lsp.cssls.setup(coq.lsp_ensure_capabilities())
-lsp.clangd.setup(coq.lsp_ensure_capabilities())
+lsp.html.setup({})
+lsp.emmet_language_server.setup({})
+lsp.pyright.setup({})
+lsp.cssls.setup({})
+lsp.clangd.setup({})
 lsp.omnisharp.setup({
     settings = {
         FormattingOptions = {
@@ -78,5 +81,5 @@ lsp.omnisharp.setup({
       },
     },
     root_dir = util.root_pattern('*.sln', '*.csproj', 'omnisharp.json', 'function.json'),
-}, coq.lsp_ensure_capabilities())
+})
 
