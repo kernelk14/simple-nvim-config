@@ -5,7 +5,7 @@ require("mason-lspconfig").setup({
 
 local lspconfig = require("lspconfig")
 
-local servers = {'clangd', 'html', 'cssls','ols', 'gopls'}
+local servers = {'clangd', 'html', 'cssls','ols', 'gopls', 'omnisharp'}
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 

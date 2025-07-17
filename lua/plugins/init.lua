@@ -35,13 +35,6 @@ require("lazy").setup({
       config = true
     },
     {
-        dir="~/AppData/Local/nvim/nvim-compile",
-        name="nvim-compile",
-        config = function()
-            require('compilation')
-        end
-    },
-    {
       'saghen/blink.cmp',
       -- optional: provides snippets for the snippet source
       dependencies = { 'rafamadriz/friendly-snippets' },
@@ -159,7 +152,7 @@ require("lazy").setup({
     },
     {
         {
-            "williamboman/mason.nvim",
+            "mason-org/mason.nvim",
         },
         "mason-org/mason-lspconfig.nvim",
     },

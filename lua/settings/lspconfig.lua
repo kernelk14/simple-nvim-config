@@ -12,10 +12,12 @@ local lsps = {
 
 require("mason").setup({
     log_level = vim.log.levels.DEBUG,
-    registries = {    "github:mason-org/mason-registry@2025-05-13-six-draw" },
     providers = { "mason.providers.client", },
+    registries = {
+        "github:mason-org/mason-registry",
+    },
     github = {
-        download_url_template = 'https://proxy.corporate.com/generic-github-releases/%s/releases/download/%s/%s',
+        download_url_template = 'https://github.com/%s/releases/download/%s/%s',
     }
 })
 require("mason-lspconfig").setup({
@@ -23,25 +25,44 @@ require("mason-lspconfig").setup({
     ensure_installed = lsps,
 })
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities({}, false))
+capabilities = vim.tbl_deep_extend('force', capabilities, {
+  textDocument = {
+    foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true
+    }
+  }
+})
+
+
 lsp.lua_ls.setup({
     settings = {
         Lua = {
+            runtime = { version = 'LuaJIT' },
             diagnostics = {
-                globals = { "vim" },
+                globals = { 'vim' },
             },
         },
         workspace = {
             library = vim.api.nvim_get_runtime_file("", true),
         },
     },
+    capabilities = capabilities
 })
 
-lsp.html.setup({})
-lsp.emmet_language_server.setup({})
-lsp.pyright.setup({})
-lsp.cssls.setup({})
-lsp.clangd.setup({})
+lsp.html.setup({capabilities = capabilities})
+lsp.emmet_language_server.setup({capabilities = capabilities})
+lsp.pyright.setup({capabilities = capabilities})
+lsp.cssls.setup({capabilities = capabilities})
+lsp.clangd.setup({capabilities = capabilities})
+
+-- local omnisharp_bin = "/home/khyle/.local/share/nvim/mason/bin/omnisharp"
+local omnisharp_bin = "omnisharp"
+
 lsp.omnisharp.setup({
+    cmd = { omnisharp_bin },
     settings = {
         FormattingOptions = {
         -- Enables support for reading code style, naming convention and analyzer
@@ -81,20 +102,10 @@ lsp.omnisharp.setup({
       },
     },
     root_dir = util.root_pattern('*.sln', '*.csproj', 'omnisharp.json', 'function.json'),
+    capabilities = capabilities
 })
 
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities({}, false))
-capabilities = vim.tbl_deep_extend('force', capabilities, {
-  textDocument = {
-    foldingRange = {
-      dynamicRegistration = false,
-      lineFoldingOnly = true
-    }
-  }
-})
-
-for _, server in ipairs(lsps) do
-    lsp[server].setup{ capabilities = capabilities }
-end
+-- for _, server in ipairs(lsps) do
+--     lsp[server].setup{ capabilities = capabilities }
+-- end

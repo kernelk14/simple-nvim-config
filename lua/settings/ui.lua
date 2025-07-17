@@ -18,3 +18,5 @@ opt.termguicolors = true
 vim.cmd [[ syntax enable ]]
 
 vim.cmd [[ colorscheme tokyonight-night ]]
+
+vim.cmd [[ set signcolumn=yes ]]
