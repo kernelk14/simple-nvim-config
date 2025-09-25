@@ -3,7 +3,8 @@ require("mason-lspconfig").setup({
     automatic_enable = false
 })
 
-local lspconfig = require("lspconfig")
+-- local lspconfig = require("lspconfig")
+local lspconfig = vim.lsp.config
 
 local servers = {'clangd', 'html', 'cssls','ols', 'gopls', 'omnisharp'}
 
@@ -21,7 +22,8 @@ capabilities = vim.tbl_deep_extend('force', capabilities, {
 })
 
 for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup{ capabilities = capabilities }
+    lspconfig(lsp, { capabilities = capabilities })
+    vim.lsp.enable(lsp)
 end
 
 -- lspconfig.clangd.setup {}

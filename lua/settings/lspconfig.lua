@@ -1,4 +1,5 @@
-local lsp = require("lspconfig")
+-- local lsp = require("lspconfig")
+local lsp = vim.lsp.config
 -- local coq = require("coq")
 
 local util = lsp.util
@@ -37,7 +38,7 @@ capabilities = vim.tbl_deep_extend('force', capabilities, {
 })
 
 
-lsp.lua_ls.setup({
+lsp("lua_ls", {
     settings = {
         Lua = {
             runtime = { version = 'LuaJIT' },
@@ -51,17 +52,23 @@ lsp.lua_ls.setup({
     },
     capabilities = capabilities
 })
+vim.lsp.enable("lua_ls")
 
-lsp.html.setup({capabilities = capabilities})
-lsp.emmet_language_server.setup({capabilities = capabilities})
-lsp.pyright.setup({capabilities = capabilities})
-lsp.cssls.setup({capabilities = capabilities})
-lsp.clangd.setup({capabilities = capabilities})
+lsp("html", {capabilities = capabilities})
+vim.lsp.enable("html")
+lsp("emmet_language_server", {capabilities = capabilities})
+vim.lsp.enable("emmet_language_server")
+lsp("pyright", {capabilities = capabilities})
+vim.lsp.enable("pyright")
+lsp("cssls", {capabilities = capabilities})
+vim.lsp.enable("cssls")
+lsp("clangd", {capabilities = capabilities})
+vim.lsp.enable("clangd")
 
 -- local omnisharp_bin = "/home/khyle/.local/share/nvim/mason/bin/omnisharp"
 local omnisharp_bin = "omnisharp"
 
-lsp.omnisharp.setup({
+lsp("omnisharp", {
     cmd = { omnisharp_bin },
     settings = {
         FormattingOptions = {
@@ -101,7 +108,7 @@ lsp.omnisharp.setup({
         IncludePrereleases = true,
       },
     },
-    root_dir = util.root_pattern('*.sln', '*.csproj', 'omnisharp.json', 'function.json'),
+    -- root_dir = util.root_pattern('*.sln', '*.csproj', 'omnisharp.json', 'function.json'),
     capabilities = capabilities
 })
 
