@@ -62,6 +62,7 @@ lsp("pyright", {capabilities = capabilities})
 vim.lsp.enable("pyright")
 lsp("cssls", {capabilities = capabilities})
 vim.lsp.enable("cssls")
+-- In Windows, refer to this file: https://gist.github.com/kernelk14/8dc1517911820196029fee4f07290ef4
 lsp("clangd", {capabilities = capabilities})
 vim.lsp.enable("clangd")
 
